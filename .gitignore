@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.env
+.env.local
+.env.*
+!.env.example
+work/
+data/
+build/
+dist/
+# Local accident text, quotations and review exports are not part of the public code release.
+reports/
+docs/images/
+SHA256SUMS.txt
+*.log

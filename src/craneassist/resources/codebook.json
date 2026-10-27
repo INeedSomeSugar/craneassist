@@ -1,0 +1,162 @@
+[
+  {
+    "code": "A1",
+    "level": 4,
+    "level_name": "组织影响",
+    "name_zh": "资源管理",
+    "name_en": "Resource management",
+    "inclusion": "组织人员选配、培训供给、经费及设备采购管理存在具体缺陷。",
+    "boundary": "单人临时离岗、一般培训不到位，不能直接证明组织资源不足。",
+    "missing_item": "组织层人员选配、培训资源、经费或设备采购管理缺陷"
+  },
+  {
+    "code": "A2",
+    "level": 4,
+    "level_name": "组织影响",
+    "name_zh": "组织氛围",
+    "name_en": "Organizational climate",
+    "inclusion": "有组织政策、指挥结构、文化或整体氛围方面的具体证据。",
+    "boundary": "“管理混乱”“责任不落实”或单位受罚本身不足以证明组织氛围。",
+    "missing_item": "组织政策、指挥结构、文化或整体工作氛围的具体材料"
+  },
+  {
+    "code": "A3",
+    "level": 4,
+    "level_name": "组织影响",
+    "name_zh": "组织过程",
+    "name_en": "Organizational process",
+    "inclusion": "组织作业维护标准、制度、文件指令、责任机制或应急预案存在缺陷。",
+    "boundary": "单次未旁站或一次现场违章不自动上升为组织制度缺陷。",
+    "missing_item": "组织技术标准、规章制度、文件指令或管理流程缺陷"
+  },
+  {
+    "code": "B1",
+    "level": 3,
+    "level_name": "不安全监督",
+    "name_zh": "监督不足",
+    "name_en": "Inadequate supervision",
+    "inclusion": "明确监督者及未履行的检查、指导、培训、资质审核或现场监督职责。",
+    "boundary": "已知问题未改另审B3，故意监督违规另审B4。",
+    "missing_item": "具体监督职责的未履行事实"
+  },
+  {
+    "code": "B2",
+    "level": 3,
+    "level_name": "不安全监督",
+    "name_zh": "作业计划不当",
+    "name_en": "Planned inappropriate operations",
+    "inclusion": "有不当人员任务分配、班组搭配或作业人员安排的具体事实。",
+    "boundary": "未编制专项方案或一般风险评估缺失，不能直接确认为B2。",
+    "missing_item": "人员任务分配、班组搭配或作业安排不当的具体事实"
+  },
+  {
+    "code": "B3",
+    "level": 3,
+    "level_name": "不安全监督",
+    "name_zh": "未纠正已知问题",
+    "name_en": "Failed to correct known problems",
+    "inclusion": "有事前发现、获知或被通知的具体问题，以及未纠正或未停止危险作业的事实。",
+    "boundary": "“未及时发现并纠正”只证明失察，不自动证明事前知情。天气预警属于已知风险的应用边界，另作复核。",
+    "missing_item": "监督者事前已知的问题及未纠正的完整链条"
+  },
+  {
+    "code": "B4",
+    "level": 3,
+    "level_name": "不安全监督",
+    "name_zh": "监督违规",
+    "name_en": "Supervisory violations",
+    "inclusion": "监督者存在明确故意违规、冒用签章、明知违规仍组织，或有故意性依据的具体违章指挥事实。",
+    "boundary": "未履职或一般违反规定的结论不足以证明故意；违章指挥也须复核其具体行为和主观依据。",
+    "missing_item": "监督人员故意违反监管要求的具体证据"
+  },
+  {
+    "code": "C1",
+    "level": 2,
+    "level_name": "不安全行为的前提条件",
+    "name_zh": "技术环境",
+    "name_en": "Technological environment",
+    "inclusion": "设备与控制设计、显示界面、检查单、自动化或任务信息条件存在相关缺陷。",
+    "boundary": "断裂、锈蚀、未连接或错装属于技术事实，需另证设计、界面或任务条件，不能沿用旧“技术与设备条件”。",
+    "missing_item": "设计、显示控制、自动化或任务信息条件缺陷"
+  },
+  {
+    "code": "C2",
+    "level": 2,
+    "level_name": "不安全行为的前提条件",
+    "name_zh": "物理环境",
+    "name_en": "Physical environment",
+    "inclusion": "不可控天气、地质等环境条件明确影响本次作业。",
+    "boundary": "未设警戒线、未落实防护不是自然环境证据；有天气记载也不等于有事故贡献。",
+    "missing_item": "事故时不可控天气、地质等环境条件及其作用"
+  },
+  {
+    "code": "C3",
+    "level": 2,
+    "level_name": "不安全行为的前提条件",
+    "name_zh": "操作者状态",
+    "name_en": "Condition of the operator",
+    "inclusion": "有事故前疾病、身体损伤、疲劳、精神心理状态或不当个人动机及其作业影响证据。",
+    "boundary": "不以“安全意识淡薄”、事故后伤亡或笼统麻痹评价替代。",
+    "missing_item": "事故前疾病、疲劳、身体或心理状态及其作业关联"
+  },
+  {
+    "code": "C4",
+    "level": 2,
+    "level_name": "不安全行为的前提条件",
+    "name_zh": "班组资源管理",
+    "name_en": "Crew resource management",
+    "inclusion": "明确相关岗位之间沟通、协调、团队合作或班组负责人缺失。",
+    "boundary": "仅有碰撞结果不证明沟通失败；跨单位监理接口需核查是否属于班组协作。",
+    "missing_item": "班组岗位之间的信息传递、协调或团队配合失效"
+  },
+  {
+    "code": "C5",
+    "level": 2,
+    "level_name": "不安全行为的前提条件",
+    "name_zh": "个人准备",
+    "name_en": "Personal readiness",
+    "inclusion": "明确一线人员培训、知识、安全意识、作业熟悉程度或应急能力准备不足。",
+    "boundary": "无证本身优先审D4，不能单独证明不会操作；组织培训供给另审A1，监督培训职责另审B1。",
+    "missing_item": "具体一线人员的知识、培训、意识或作业准备不足"
+  },
+  {
+    "code": "D1",
+    "level": 1,
+    "level_name": "不安全行为",
+    "name_zh": "技能型差错",
+    "name_en": "Skill-based errors",
+    "inclusion": "有具体操作动作、注意遗漏或程序执行差错；参考原文表9a的防护使用实例。",
+    "boundary": "报告明确违规且可指出要求时优先D4；不为同一动作同时确认差错和违规。防护使用边界需人工复核。",
+    "missing_item": "可区分于明确违规的动作、注意或操作程序差错"
+  },
+  {
+    "code": "D2",
+    "level": 1,
+    "level_name": "不安全行为",
+    "name_zh": "决策差错",
+    "name_en": "Decision errors",
+    "inclusion": "有具体情境判断、所选处置方案及其错误性材料。",
+    "boundary": "仅有事故后果或违章操作不足以独立确认决策差错。",
+    "missing_item": "具体错误判断或情境处置选择的依据"
+  },
+  {
+    "code": "D3",
+    "level": 1,
+    "level_name": "不安全行为",
+    "name_zh": "感知差错",
+    "name_en": "Perception errors",
+    "inclusion": "有实际情况与所感知情况不一致，或明确感知受限导致识别失真的材料。",
+    "boundary": "“未观察”“未注意”或“踩空”本身不能证明感知失真。",
+    "missing_item": "感知内容与实际不一致或感知受限的具体证据"
+  },
+  {
+    "code": "D4",
+    "level": 1,
+    "level_name": "不安全行为",
+    "name_zh": "违规行为",
+    "name_en": "Violations",
+    "inclusion": "具体作业维护偏离标准、无任务资格、作业准备不落实等事实。",
+    "boundary": "依据本篇表1的操作性定义，不额外推定主观故意；组织违法手续不能替代一线不安全行为。",
+    "missing_item": "具体偏离作业维护要求或无任务资格实际作业的事实"
+  }
+]
