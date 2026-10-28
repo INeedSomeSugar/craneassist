@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class StrictModel(BaseModel):
@@ -64,6 +64,23 @@ class ReviewRequest(StrictModel):
     exclusion_coverage: str = Field(default="", max_length=3000)
     decision: Literal["accept", "modify", "reject"] | None = None
     session_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{32}$")
+    reason_codes: list[
+        Literal[
+            "fact_missing",
+            "category_confusion",
+            "evidence_insufficient",
+            "postaccident_misuse",
+            "unsupported_inference",
+            "other",
+        ]
+    ] = Field(default_factory=list, max_length=6)
+
+    @field_validator("reason_codes")
+    @classmethod
+    def unique_reasons(cls, values):
+        if len(values) != len(set(values)):
+            raise ValueError("duplicate_review_reason")
+        return values
 
 
 class ReviewSessionRequest(StrictModel):

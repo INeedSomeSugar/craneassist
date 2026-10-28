@@ -198,7 +198,7 @@ def test_batch_and_review_session_api_keep_validation_admission_closed(sample):
         assert client.put(endpoint, json={"reviewer": "其他人"}).status_code == 400
         assert client.put(endpoint, json={"reviewer": "工程测试"}).status_code == 200
         exported = client.get(f"/api/runs/{run_id}/export").json()
-        assert exported["schema_version"] == "craneassist.v0.2"
+        assert exported["schema_version"] == "craneassist.v0.3"
         assert not exported["run"]["expert_validated"]
         assert not exported["run"]["human_independent_annotation_completed"]
         assert not exported["run"]["training_or_evaluation_admitted"]

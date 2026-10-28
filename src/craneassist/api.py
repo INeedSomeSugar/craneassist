@@ -15,6 +15,7 @@ from .config import Settings
 from .engine import execute, new_run
 from .evidence import check_evidence
 from .models import ImportRequest, ReviewRequest, ReviewSessionRequest, RunRequest
+from .review import REVIEW_REASONS, review_projection
 from .store import Store
 
 
@@ -35,7 +36,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             run["error"] = "service_restarted_start_a_new_run"
             store.save_run(run)
     pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="craneassist")
-    app = FastAPI(title="CraneAssist", version="0.2.0", docs_url="/docs")
+    app = FastAPI(title="CraneAssist", version="0.3.0", docs_url="/docs")
     app.state.store = store
 
     @app.middleware("http")
@@ -63,6 +64,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "max_turns": settings.max_turns,
             "token_budget": settings.token_budget,
             "codebook": store.codebook,
+            "review_reasons": REVIEW_REASONS,
         }
 
     @app.get("/api/cases")
@@ -160,7 +162,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/runs/{run_id}")
     def get_run(run_id: str, compact: bool = False):
         run = store.get_run(run_id)
-        return brief_run(run) | {"event_count": len(run["events"])} if compact else run
+        return (
+            brief_run(run) | {"event_count": len(run["events"])}
+            if compact
+            else run | review_projection(run)
+        )
 
     @app.put("/api/runs/{run_id}/reviews/{code}")
     def review(run_id: str, code: str, payload: ReviewRequest):
@@ -175,16 +181,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise ValueError("human_1_or_0_requires_exact_evidence")
         if payload.label_value == "0" and len(payload.exclusion_coverage.strip()) < 40:
             raise ValueError("0_requires_explaining_complete_core_condition_exclusion_min_40_chars")
-        return store.review(run_id, code, payload.model_dump())
+        reviewed = store.review(run_id, code, payload.model_dump())
+        return reviewed | review_projection(reviewed)
 
     @app.get("/api/runs/{run_id}/export")
     def export(run_id: str, format: str = "json"):
         run = store.get_run(run_id)
         case = store.get_case(run["case_id"])
         export_data = {
-            "schema_version": "craneassist.v0.2",
+            "schema_version": "craneassist.v0.3",
             "case": case,
             "run": run,
+            **review_projection(run),
             "notice": "AI候选及看过AI后的人工复核。未建立独立标注或专家真值。",
         }
         if format == "json":
@@ -220,6 +228,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     lines += [
                         f"人工复核：{human['label_value']}；复核人：{human['reviewer']}",
                         f"意见：{human['comment']}",
+                        "复核原因："
+                        + "、".join(
+                            REVIEW_REASONS.get(reason, reason)
+                            for reason in human.get("reason_codes", [])
+                        ),
                         "",
                     ]
                     for ev in human["evidence"]:
